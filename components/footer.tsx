@@ -1,0 +1,102 @@
+"use client"
+
+import { Mail, Phone, MapPin, ArrowUp } from "lucide-react"
+import { useState, useEffect } from "react"
+
+export function Footer() {
+  const [showScrollTop, setShowScrollTop] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight
+      const scrollTop = window.scrollY
+      const clientHeight = window.innerHeight
+      const scrolledToBottom = scrollHeight - scrollTop - clientHeight < 500
+      setShowScrollTop(scrolledToBottom)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  return (
+    <footer className="relative w-full bg-neutral-50 border-t border-neutral-200">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          {/* About Section */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-neutral-900 uppercase tracking-wider">EventBrite</h3>
+              <p className="text-sm text-neutral-600 leading-relaxed">
+                For over a decade, Eventbrite has been at the forefront of India's real estate marketing industry, creating unforgettable experiences.
+              </p>
+            </div>
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <h4 className="text-lg font-bold text-neutral-900 uppercase tracking-wider">Contact Info</h4>
+            <div className="space-y-4">
+              <a href="tel:+919833848009" className="flex items-center gap-3 text-neutral-600 hover:text-amber-600 transition-colors group">
+                <div className="p-2 rounded-lg bg-amber-100 group-hover:bg-amber-200 transition-colors">
+                  <Phone className="w-4 h-4 text-amber-600" />
+                </div>
+                <span className="text-sm font-medium">+91 9833848009</span>
+              </a>
+              <a href="mailto:info@event-brite.in" className="flex items-center gap-3 text-neutral-600 hover:text-amber-600 transition-colors group">
+                <div className="p-2 rounded-lg bg-amber-100 group-hover:bg-amber-200 transition-colors">
+                  <Mail className="w-4 h-4 text-amber-600" />
+                </div>
+                <span className="text-sm font-medium">info@event-brite.in</span>
+              </a>
+              <div className="flex items-start gap-3 text-neutral-600">
+                <div className="p-2 rounded-lg bg-amber-100">
+                  <MapPin className="w-4 h-4 text-amber-600" />
+                </div>
+                <span className="text-sm font-medium">Mumbai, Maharashtra, India</span>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="space-y-6">
+            <h4 className="text-5xl md:text-6xl font-bold text-neutral-900 leading-tight">
+              LET'S<br />CONNECT
+            </h4>
+            <button className="group inline-flex items-center gap-3 px-6 py-3 bg-neutral-900 text-white rounded-xl font-semibold hover:bg-amber-600 transition-all duration-300">
+              Get In Touch
+              <ArrowUp className="w-5 h-5 rotate-45 transition-transform group-hover:translate-x-1" />
+            </button>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-neutral-200">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-neutral-600">
+              Copyright © {new Date().getFullYear()} EventBrite | All rights reserved
+            </p>
+            <p className="text-sm text-neutral-600">
+              Designed by <span className="font-semibold text-neutral-900">EventBrite</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 p-4 bg-gradient-to-tr from-blue-600 to-cyan-500 text-white rounded-full shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-110 z-50"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp className="w-6 h-6" />
+        </button>
+      )}
+    </footer>
+  )
+}
