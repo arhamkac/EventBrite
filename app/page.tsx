@@ -19,8 +19,8 @@ export default function Page() {
       <ScrollHeader />
       <AppShell />
       <UnifiedParallaxSection />
-      <SalesLoungeGallery />
       <AboutSection />
+      <SalesLoungeGallery />
       <ServicesSection />
       <StatsSection />
       <TeamSection />
