@@ -113,23 +113,23 @@ export default function ExpertisePage() {
       <Navbar />
       
       {/* Hero Section with Video */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
-          <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4" type="video/mp4" />
+          <source src="/videos/services-bg.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl">
-            Our <span className="text-amber-500">Expertise</span>
+          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
+            Our Expertise
           </h1>
-          <p className="max-w-3xl text-lg md:text-xl text-white/90 drop-shadow-lg">
+          <p className="max-w-3xl text-xl text-white/90">
             Comprehensive design, build, and exhibit solutions that transform ideas into impactful real estate experiences.
           </p>
         </div>
       </section>
 
       {/* Expertise Cards */}
-      <section className="py-20 px-6 md:px-12 lg:px-20">
+      <section className="py-20 px-6 md:px-12 lg:px-20 bg-white">
         <div className="max-w-7xl mx-auto space-y-12">
           {EXPERTISE_ITEMS.map((item, index) => (
             <div 

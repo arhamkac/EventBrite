@@ -14,25 +14,12 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'YODEZEEN | Luxury Architecture & Interior Design Studio',
+  title: 'Event-Brite',
   description: 'Award-winning architecture and interior design studio creating exceptional residential and commercial spaces worldwide.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/images/logo.webp',
+    apple: '/images/logo.webp',
   },
 }
 

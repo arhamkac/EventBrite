@@ -1,6 +1,7 @@
 "use client"
 
 import { ArrowRight } from "lucide-react"
+import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useEffect, useRef, useState } from "react"
 
@@ -62,25 +63,7 @@ export default function AboutPage() {
   }, [])
   return (
     <main className="min-h-screen bg-black">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-neutral-800">
-        <nav className="flex items-center justify-between px-6 py-5 md:px-10 lg:px-12 max-w-7xl mx-auto">
-          <a href="/" className="flex items-center">
-            <img src="/images/logo.webp" alt="EventBrite" className="h-8 md:h-10" />
-          </a>
-          <div className="flex items-center gap-8">
-            <a href="/#projects" className="text-xs font-medium uppercase tracking-[0.15em] text-white/80 hover:text-white transition-colors">
-              Projects
-            </a>
-            <a href="/#services" className="text-xs font-medium uppercase tracking-[0.15em] text-white/80 hover:text-white transition-colors">
-              Services
-            </a>
-            <a href="/#contact" className="text-xs font-medium uppercase tracking-[0.15em] text-white/80 hover:text-white transition-colors">
-              Contact
-            </a>
-          </div>
-        </nav>
-      </header>
+      <Navbar />
 
       {/* Hero Video Section */}
       <section className="relative h-screen w-full overflow-hidden">
@@ -103,10 +86,10 @@ export default function AboutPage() {
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
               Driven by passion, defined by purpose — building trust and delivering excellence every step of the way.
             </p>
-            <button className="group inline-flex items-center gap-3 px-8 py-4 bg-amber-600 text-white rounded-xl font-semibold hover:bg-amber-500 transition-all duration-300">
+            <a href="/contact" className="group inline-flex items-center gap-3 px-8 py-4 bg-amber-600 text-white rounded-xl font-semibold hover:bg-amber-500 transition-all duration-300">
               WORK WITH US
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -146,37 +129,37 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission Section */}
-      <section className="relative w-full bg-black py-32 px-6 md:px-12 lg:px-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-900 via-black to-neutral-900"></div>
+      <section className="relative w-full bg-white py-32 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto relative">
           <div className="text-center mb-24">
-            <span className="text-amber-500 font-semibold text-sm uppercase tracking-wider">Our Purpose</span>
-            <h2 className="text-5xl md:text-6xl font-bold text-white mt-4">Vision & Mission</h2>
+            <h2 className="text-5xl md:text-6xl font-bold text-neutral-900 mb-4">Vision & Mission</h2>
+            <p className="text-lg text-neutral-600">Guiding principles that drive our success</p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Vision Card */}
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-              <div className="relative bg-neutral-900/80 backdrop-blur-xl p-12 rounded-3xl border border-neutral-800 hover:border-amber-500/50 transition-all duration-500">
-                <div className="text-6xl mb-8">👁️</div>
-                <h3 className="text-3xl font-bold text-white mb-6">Vision</h3>
-                <p className="text-neutral-400 text-lg leading-relaxed">
-                  To redefine how India buys homes by building a ₹1000 crore enterprise that creates premium, sustainable, and affordable spaces.
-                </p>
+            <div className="group relative p-12 rounded-3xl bg-gradient-to-br from-neutral-50 to-white border border-neutral-200 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">
+              <div className="w-16 h-16 mb-8 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
               </div>
+              <h3 className="text-3xl font-bold text-neutral-900 mb-6">Vision</h3>
+              <p className="text-neutral-600 text-lg leading-relaxed">
+                To redefine how India buys homes by building a ₹1000 crore enterprise that creates premium, sustainable, and affordable spaces.
+              </p>
             </div>
 
-            {/* Mission Card */}
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-              <div className="relative bg-neutral-900/80 backdrop-blur-xl p-12 rounded-3xl border border-neutral-800 hover:border-amber-500/50 transition-all duration-500">
-                <div className="text-6xl mb-8">🎯</div>
-                <h3 className="text-3xl font-bold text-white mb-6">Mission</h3>
-                <p className="text-neutral-400 text-lg leading-relaxed">
-                  To deliver innovative and cost-effective project experiences that engage audiences and accelerate conversions.
-                </p>
+            <div className="group relative p-12 rounded-3xl bg-gradient-to-br from-neutral-50 to-white border border-neutral-200 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">
+              <div className="w-16 h-16 mb-8 rounded-2xl bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </div>
+              <h3 className="text-3xl font-bold text-neutral-900 mb-6">Mission</h3>
+              <p className="text-neutral-600 text-lg leading-relaxed">
+                To deliver innovative and cost-effective project experiences that engage audiences and accelerate conversions.
+              </p>
             </div>
           </div>
         </div>
@@ -186,27 +169,24 @@ export default function AboutPage() {
       <section className="relative w-full bg-neutral-50 py-32 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-24">
-            <span className="text-amber-600 font-semibold text-sm uppercase tracking-wider">What Drives Us</span>
-            <h2 className="text-5xl md:text-6xl font-bold text-neutral-900 mt-4">Core Values</h2>
+            <h2 className="text-5xl md:text-6xl font-bold text-neutral-900 mb-4">Core Values</h2>
+            <p className="text-lg text-neutral-600">The principles that define who we are</p>
           </div>
 
           <div className="grid md:grid-cols-5 gap-6">
             {[
-              { icon: "💡", title: "Innovation", desc: "Fresh ideas" },
-              { icon: "⭐", title: "Quality", desc: "Uncompromising standards" },
-              { icon: "🤝", title: "Integrity", desc: "Building trust" },
-              { icon: "👥", title: "Customer Focus", desc: "Client-first approach" },
-              { icon: "⚡", title: "Efficiency", desc: "Maximum impact" }
+              { icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>, title: "Innovation", desc: "Constantly reimagining experiences with fresh ideas." },
+              { icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>, title: "Quality", desc: "Maintaining uncompromising standards in everything we deliver." },
+              { icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>, title: "Integrity", desc: "Building trust through transparency and accountability." },
+              { icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>, title: "Customer Focus", desc: "Putting client goals at the heart of every project." },
+              { icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>, title: "Efficiency", desc: "Ensuring timely, seamless execution with maximum impact." }
             ].map((value, i) => (
-              <div key={i} className="group text-center">
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-amber-500/20 blur-xl group-hover:blur-2xl transition-all"></div>
-                  <div className="relative w-24 h-24 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-xl">
-                    <span className="text-5xl">{value.icon}</span>
-                  </div>
+              <div key={i} className="group text-center p-6 rounded-2xl bg-white border border-neutral-200 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white group-hover:scale-110 transition-transform">
+                  {value.icon}
                 </div>
-                <h3 className="text-xl font-bold text-neutral-900 mb-2">{value.title}</h3>
-                <p className="text-neutral-600 text-sm">{value.desc}</p>
+                <h3 className="text-xl font-bold text-neutral-900 mb-3">{value.title}</h3>
+                <p className="text-neutral-600 text-sm leading-relaxed">{value.desc}</p>
               </div>
             ))}
           </div>

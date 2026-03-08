@@ -36,43 +36,28 @@ export default function SalesLoungePage() {
   const [videoLoaded, setVideoLoaded] = useState(false)
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-black via-neutral-900 to-black">
-      {/* Background Video */}
-      <div className="fixed inset-0 z-0">
+    <div className="relative min-h-screen">
+      {/* Fixed Background Video */}
+      <div className="fixed inset-0 w-full h-full z-0">
         <video
           autoPlay
           loop
           muted
           playsInline
-          onLoadedData={() => setVideoLoaded(true)}
-          className="h-full w-full object-cover opacity-60"
+          className="w-full h-full object-cover"
         >
-          <source src="/intro.mp4" type="video/mp4" />
+          <source src="/videos/projects-bg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-neutral-900/90" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* Content */}
+      {/* Scrollable Content */}
       <div className="relative z-10">
         <Navbar />
         
-        {/* Hero Section */}
-        <section className="flex min-h-[70vh] flex-col items-center justify-center px-6 pt-32 pb-20 text-center">
-          <h1 className="mb-6 text-5xl md:text-7xl font-bold text-white leading-tight drop-shadow-2xl">
-            Welcome to <span className="text-amber-500">Our Sales Lounge</span>
-          </h1>
-          <p className="max-w-2xl text-lg md:text-xl text-white/90 mb-8 drop-shadow-lg">
-            A dedicated space for collaboration, strategy, and driving success
-          </p>
-          <button className="group inline-flex items-center gap-3 px-8 py-4 bg-amber-500 text-black rounded-full font-semibold hover:bg-amber-400 transition-all duration-300 shadow-xl">
-            CONNECT NOW
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </button>
-        </section>
-
         {/* Gallery Grid */}
-        <section className="px-6 md:px-12 lg:px-20 pb-20">
-          <div className="max-w-7xl mx-auto backdrop-blur-sm bg-black/30 rounded-3xl p-8 md:p-12">
+        <section className="min-h-screen px-6 md:px-12 lg:px-20 py-32">
+          <div className="max-w-7xl mx-auto backdrop-blur-md bg-white/10 rounded-3xl p-8 md:p-12 border border-white/20">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {PROJECTS.map((project) => (
                 <div
@@ -96,6 +81,19 @@ export default function SalesLoungePage() {
                   </div>
                 </div>
               ))}
+            </div>
+            
+            {/* See More Button */}
+            <div className="text-center mt-12">
+              <a 
+                href="https://drive.google.com/drive/folders/1lX81Vzuk-VKDSTBaGabCgLsnsLJXRmGq" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-neutral-900 rounded-full font-semibold hover:bg-neutral-100 transition-all duration-300 shadow-xl"
+              >
+                SEE ALL PROJECTS
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </a>
             </div>
           </div>
         </section>

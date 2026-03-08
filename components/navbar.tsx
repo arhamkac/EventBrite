@@ -6,13 +6,12 @@ import { Plus, Send } from "lucide-react"
 const NAV_LINKS_LEFT = [
   { label: "PROJECTS", href: "/sales-lounge" },
   { label: "SERVICES", href: "/expertise" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "CONTACT", href: "/contact" },
 ] as const
 
 const NAV_LINKS_RIGHT = [
   { label: "ABOUT", href: "/about" },
   { label: "CLIENTS", href: "/clients" },
-  { label: "CAREER", href: "#career" },
 ] as const
 
 export function Navbar() {

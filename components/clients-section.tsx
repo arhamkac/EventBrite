@@ -1,11 +1,16 @@
 "use client"
 
 import { useEffect, useRef, useState, useCallback } from "react"
+import { ArrowRight } from "lucide-react"
 
-const CLIENTS = Array.from({ length: 41 }, (_, i) => ({
-  id: i + 1,
-  logo: `/images/clients/client-${i + 1}.webp`
-}))
+const CLIENTS = [
+  { id: 11, logo: `/clients/client-11.webp` },
+  { id: 8, logo: `/clients/client-8.webp` },
+  { id: 9, logo: `/clients/client-9.webp` },
+  { id: 6, logo: `/clients/client-6.webp` },
+  { id: 3, logo: `/clients/client-3.webp` },
+  { id: 2, logo: `/clients/client-2.webp` }
+]
 
 export function ClientsSection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -25,29 +30,30 @@ export function ClientsSection() {
   }, [calculateScrollProgress])
 
   return (
-    <section ref={containerRef} className="relative w-full bg-amber-100 py-16 px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section ref={containerRef} className="relative w-full bg-neutral-100 py-24 px-6 overflow-hidden">
+      
+      <div className="max-w-7xl mx-auto relative">
         <div 
-          className="text-center mb-12"
+          className="text-center mb-16 space-y-4"
           style={{
             opacity: Math.min(scrollProgress * 2, 1),
             transform: `translateY(${Math.max(0, 20 - scrollProgress * 40)}px)`
           }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-2">
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900">
             Trusted by Industry Leaders
           </h2>
-          <p className="text-neutral-600">
+          <p className="text-neutral-600 max-w-2xl mx-auto">
             Partnering with India's most prestigious real estate brands
           </p>
         </div>
 
         <div className="relative">
-          <div className="flex gap-12 animate-scroll">
-            {[...CLIENTS.slice(0, 20), ...CLIENTS.slice(0, 20)].map((client, index) => (
+          <div className="flex gap-8 animate-scroll">
+            {[...CLIENTS, ...CLIENTS, ...CLIENTS].map((client, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-40 h-20 flex items-center justify-center bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="flex-shrink-0 w-40 h-32 flex items-center justify-center bg-white rounded-xl p-6 border border-neutral-200 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300"
                 style={{
                   opacity: Math.min(scrollProgress * 2, 1)
                 }}
@@ -55,19 +61,23 @@ export function ClientsSection() {
                 <img
                   src={client.logo}
                   alt={`Client ${client.id}`}
-                  className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  className="max-w-full max-h-full object-contain transition-all duration-300"
                 />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="text-center mt-12">
-          <a href="/clients" className="px-8 py-3 bg-neutral-900 text-white rounded-md font-semibold hover:bg-neutral-800 transition-all duration-300 inline-flex items-center gap-2">
+        <div 
+          className="text-center mt-16"
+          style={{
+            opacity: Math.min((scrollProgress - 0.3) * 2, 1),
+            transform: `translateY(${Math.max(0, 20 - (scrollProgress - 0.3) * 40)}px)`
+          }}
+        >
+          <a href="/clients" className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-neutral-900 to-neutral-800 text-white rounded-full font-semibold hover:shadow-xl hover:shadow-neutral-900/30 transition-all duration-300">
             VIEW ALL CLIENTS
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </a>
         </div>
       </div>
@@ -82,7 +92,7 @@ export function ClientsSection() {
           }
         }
         .animate-scroll {
-          animation: scroll 30s linear infinite;
+          animation: scroll 40s linear infinite;
         }
         .animate-scroll:hover {
           animation-play-state: paused;

@@ -67,10 +67,10 @@ export function Footer() {
             <h4 className="text-5xl md:text-6xl font-bold text-neutral-900 leading-tight">
               LET'S<br />CONNECT
             </h4>
-            <button className="group inline-flex items-center gap-3 px-6 py-3 bg-neutral-900 text-white rounded-xl font-semibold hover:bg-amber-600 transition-all duration-300">
+            <a href="/contact" className="group inline-flex items-center gap-3 px-6 py-3 bg-neutral-900 text-white rounded-xl font-semibold hover:bg-amber-600 transition-all duration-300">
               Get In Touch
               <ArrowUp className="w-5 h-5 rotate-45 transition-transform group-hover:translate-x-1" />
-            </button>
+            </a>
           </div>
         </div>
 

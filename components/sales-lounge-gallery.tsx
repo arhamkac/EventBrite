@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState, useCallback, type MouseEvent } from "react"
-import { X, ChevronLeft, ChevronRight, MapPin } from "lucide-react"
+import { X, ChevronLeft, ChevronRight, MapPin, ArrowRight } from "lucide-react"
 
 interface Project {
   id: number
@@ -18,9 +18,6 @@ const PROJECTS: Project[] = [
   { id: 5, name: "ASHFORD", location: "Nahur", images: ["/images/ashford-1.webp", "/images/ashford-2.webp", "/images/ashford-3.webp", "/images/ashford-4.webp", "/images/ashford-5.webp", "/images/ashford-6.webp"] },
   { id: 6, name: "KALPATARU - ARIA", location: "Karjat", images: ["/images/kalpataru-1.webp", "/images/kalpataru-2.webp", "/images/kalpataru-3.webp", "/images/kalpataru-4.webp"] }
 ]
-
-const PARALLAX_CONFIG = { offset: 0.2, baseSpeed: 50, speedIncrement: 10 }
-const SCROLL_THRESHOLDS = { title: 2, button: 0.3 }
 
 export function SalesLoungeGallery() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -88,43 +85,35 @@ export function SalesLoungeGallery() {
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [selectedProject, closeGallery, navigateImage])
 
-  const getParallaxStyle = useCallback((index: number) => {
-    const { offset, baseSpeed, speedIncrement } = PARALLAX_CONFIG
-    const adjustedProgress = scrollProgress - offset
-    const translateY = Math.max(0, baseSpeed - adjustedProgress * (baseSpeed + index * speedIncrement))
-    const opacity = Math.max(0, Math.min(scrollProgress * SCROLL_THRESHOLDS.title, 1) - index * 0.1)
-    return { transform: `translateY(${translateY}px)`, opacity }
-  }, [scrollProgress])
-
-  const getTitleStyle = useCallback(() => ({
-    opacity: Math.min(scrollProgress * SCROLL_THRESHOLDS.title, 1),
-    transform: `translateY(${Math.max(0, 30 - scrollProgress * 60)}px)`
-  }), [scrollProgress])
-
-  const getButtonStyle = useCallback(() => ({
-    opacity: Math.min((scrollProgress - SCROLL_THRESHOLDS.button) * 2, 1),
-    transform: `translateY(${Math.max(0, 20 - (scrollProgress - SCROLL_THRESHOLDS.button) * 40)}px)`
-  }), [scrollProgress])
-
   return (
     <>
-      <section ref={containerRef} className="relative w-full min-h-screen bg-neutral-900 py-20 px-6 md:px-12 lg:px-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <header className="text-center mb-16 transition-all duration-700" style={getTitleStyle()}>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 tracking-tight">
-              Experiencing the Sales Lounge
+      <section ref={containerRef} className="relative w-full min-h-screen bg-white py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+        
+        <div className="max-w-7xl mx-auto relative">
+          <header 
+            className="text-center mb-20 space-y-4"
+            style={{
+              opacity: Math.min(scrollProgress * 2, 1),
+              transform: `translateY(${Math.max(0, 30 - scrollProgress * 60)}px)`
+            }}
+          >
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 tracking-tight">
+              Sales Lounge Gallery
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              A dedicated space designed to engage, inspire, and showcase every detail with clarity and impact.
+            <p className="text-lg md:text-xl text-neutral-600 max-w-2xl mx-auto">
+              Spaces designed to inspire, engage, and convert
             </p>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {PROJECTS.map((project, index) => (
               <article 
                 key={project.id} 
-                className="group relative bg-card rounded-lg overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl" 
-                style={getParallaxStyle(index)} 
+                className="group relative bg-white rounded-2xl overflow-hidden cursor-pointer border border-neutral-200 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-500" 
+                style={{
+                  opacity: Math.min((scrollProgress - index * 0.05) * 2, 1),
+                  transform: `translateY(${Math.max(0, 50 - (scrollProgress - index * 0.05) * 100)}px)`
+                }}
                 onClick={() => openGallery(project)}
               >
                 <div className="aspect-[4/3] relative overflow-hidden">
@@ -134,11 +123,11 @@ export function SalesLoungeGallery() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                     loading="lazy" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/30 to-transparent" />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transition-transform duration-500">
-                  <h3 className="text-2xl font-bold mb-1 tracking-wide">{project.name}</h3>
-                  <p className="text-sm text-gray-300 flex items-center gap-2">
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2 tracking-wide">{project.name}</h3>
+                  <p className="text-sm text-neutral-200 flex items-center gap-2">
                     <MapPin className="w-4 h-4" />
                     {project.location}
                   </p>
@@ -147,12 +136,16 @@ export function SalesLoungeGallery() {
             ))}
           </div>
 
-          <div className="text-center mt-12 transition-all duration-700" style={getButtonStyle()}>
-            <a href="/sales-lounge" className="px-8 py-3 bg-accent text-accent-foreground rounded-md font-semibold hover:bg-accent/90 transition-all duration-300 flex items-center gap-2 mx-auto hover:gap-3 w-fit">
+          <div 
+            className="text-center mt-16"
+            style={{
+              opacity: Math.min((scrollProgress - 0.3) * 2, 1),
+              transform: `translateY(${Math.max(0, 20 - (scrollProgress - 0.3) * 40)}px)`
+            }}
+          >
+            <a href="/sales-lounge" className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-neutral-900 to-neutral-800 text-white rounded-full font-semibold hover:shadow-xl hover:shadow-neutral-900/30 transition-all duration-300">
               VIEW ALL PROJECTS
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
         </div>
@@ -166,11 +159,9 @@ export function SalesLoungeGallery() {
           aria-modal="true"
           aria-labelledby="gallery-title"
         >
-          <div className="absolute inset-0 bg-gradient-radial from-accent/5 via-transparent to-transparent" />
-          
           <button 
             onClick={(e) => { e.stopPropagation(); closeGallery(); }} 
-            className="absolute top-4 right-4 md:top-6 md:right-6 text-white/80 hover:text-accent hover:rotate-90 transition-all duration-500 z-20 p-2 rounded-full hover:bg-white/10"
+            className="absolute top-4 right-4 md:top-6 md:right-6 text-white/80 hover:text-white hover:rotate-90 transition-all duration-500 z-20 p-2 rounded-full hover:bg-white/10"
             aria-label="Close gallery"
           >
             <X className="w-6 h-6 md:w-8 md:h-8" />
@@ -180,14 +171,14 @@ export function SalesLoungeGallery() {
             <>
               <button 
                 onClick={(e) => handleNavClick(e, 'prev')} 
-                className="absolute left-2 md:left-6 text-white/80 hover:text-accent hover:scale-110 transition-all duration-300 z-20 p-3 rounded-full hover:bg-white/10 backdrop-blur-sm"
+                className="absolute left-2 md:left-6 text-white/80 hover:text-white hover:scale-110 transition-all duration-300 z-20 p-3 rounded-full hover:bg-white/10 backdrop-blur-sm"
                 aria-label="Previous image"
               >
                 <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
               </button>
               <button 
                 onClick={(e) => handleNavClick(e, 'next')} 
-                className="absolute right-2 md:right-6 text-white/80 hover:text-accent hover:scale-110 transition-all duration-300 z-20 p-3 rounded-full hover:bg-white/10 backdrop-blur-sm"
+                className="absolute right-2 md:right-6 text-white/80 hover:text-white hover:scale-110 transition-all duration-300 z-20 p-3 rounded-full hover:bg-white/10 backdrop-blur-sm"
                 aria-label="Next image"
               >
                 <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
@@ -196,7 +187,7 @@ export function SalesLoungeGallery() {
           )}
 
           <div className="max-w-5xl w-full relative" onClick={(e) => e.stopPropagation()}>
-            <header className="mb-4 text-center space-y-1 animate-in fade-in slide-in-from-top-4 duration-500">
+            <header className="mb-4 text-center space-y-1">
               <h3 id="gallery-title" className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                 {selectedProject.name}
               </h3>
@@ -209,36 +200,29 @@ export function SalesLoungeGallery() {
               </p>
             </header>
 
-            <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl ring-1 ring-white/10">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-50" />
+            <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
               <img 
                 key={`${selectedProject.id}-${currentImageIndex}`}
                 src={selectedProject.images[currentImageIndex]} 
                 alt={`${selectedProject.name} - Image ${currentImageIndex + 1}`} 
-                className={`w-full h-full object-cover animate-in fade-in zoom-in-95 duration-500 ${
-                  imageDirection === 'right' ? 'slide-in-from-right-10' : 'slide-in-from-left-10'
-                }`}
+                className="w-full h-full object-cover"
               />
             </div>
 
             {selectedProject.images.length > 1 && (
-              <nav className="flex justify-center items-center gap-2 mt-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-150" aria-label="Image navigation">
+              <nav className="flex justify-center items-center gap-2 mt-4" aria-label="Image navigation">
                 {selectedProject.images.map((_, index) => (
                   <button 
                     key={index} 
                     onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(index); }} 
-                    className={`relative h-1 rounded-full transition-all duration-500 ${
+                    className={`h-1 rounded-full transition-all duration-300 ${
                       index === currentImageIndex 
-                        ? "bg-accent w-8 shadow-lg shadow-accent/50" 
-                        : "bg-gray-600/50 w-6 hover:bg-gray-500 hover:w-7"
+                        ? "bg-white w-8" 
+                        : "bg-gray-600 w-6 hover:bg-gray-500"
                     }`}
                     aria-label={`Go to image ${index + 1}`}
                     aria-current={index === currentImageIndex}
-                  >
-                    {index === currentImageIndex && (
-                      <span className="absolute inset-0 rounded-full bg-accent animate-pulse" />
-                    )}
-                  </button>
+                  />
                 ))}
               </nav>
             )}
