@@ -11,6 +11,7 @@ const NAV_LINKS_LEFT = [
 
 const NAV_LINKS_RIGHT = [
   { label: "ABOUT", href: "/about" },
+  { label: "CLIENTS", href: "/clients" },
   { label: "CAREER", href: "#career" },
 ] as const
 

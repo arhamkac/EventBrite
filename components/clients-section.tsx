@@ -2,16 +2,10 @@
 
 import { useEffect, useRef, useState, useCallback } from "react"
 
-const CLIENTS = [
-  { name: "Taj Hotels", logo: "/placeholder.svg" },
-  { name: "Renaissance Hotels", logo: "/placeholder.svg" },
-  { name: "Godrej Properties", logo: "/placeholder.svg" },
-  { name: "Omkar Realtors", logo: "/placeholder.svg" },
-  { name: "Oberoi Realty", logo: "/placeholder.svg" },
-  { name: "Piramal Realty", logo: "/placeholder.svg" },
-  { name: "UK Realty", logo: "/placeholder.svg" },
-  { name: "Adani Realty", logo: "/placeholder.svg" }
-]
+const CLIENTS = Array.from({ length: 41 }, (_, i) => ({
+  id: i + 1,
+  logo: `/images/clients/client-${i + 1}.webp`
+}))
 
 export function ClientsSection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -48,10 +42,9 @@ export function ClientsSection() {
           </p>
         </div>
 
-        {/* Infinite scroll logos */}
         <div className="relative">
           <div className="flex gap-12 animate-scroll">
-            {[...CLIENTS, ...CLIENTS].map((client, index) => (
+            {[...CLIENTS.slice(0, 20), ...CLIENTS.slice(0, 20)].map((client, index) => (
               <div
                 key={index}
                 className="flex-shrink-0 w-40 h-20 flex items-center justify-center bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300"
@@ -61,12 +54,21 @@ export function ClientsSection() {
               >
                 <img
                   src={client.logo}
-                  alt={client.name}
+                  alt={`Client ${client.id}`}
                   className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="text-center mt-12">
+          <a href="/clients" className="px-8 py-3 bg-neutral-900 text-white rounded-md font-semibold hover:bg-neutral-800 transition-all duration-300 inline-flex items-center gap-2">
+            VIEW ALL CLIENTS
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </div>
 
