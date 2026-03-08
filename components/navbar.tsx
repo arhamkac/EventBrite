@@ -4,8 +4,8 @@ import { useState } from "react"
 import { Plus, Send } from "lucide-react"
 
 const NAV_LINKS_LEFT = [
-  { label: "PROJECTS", href: "#projects" },
-  { label: "SERVICES", href: "#services" },
+  { label: "PROJECTS", href: "/sales-lounge" },
+  { label: "SERVICES", href: "/expertise" },
   { label: "CONTACT", href: "#contact" },
 ] as const
 

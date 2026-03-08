@@ -148,12 +148,12 @@ export function SalesLoungeGallery() {
           </div>
 
           <div className="text-center mt-12 transition-all duration-700" style={getButtonStyle()}>
-            <button className="px-8 py-3 bg-accent text-accent-foreground rounded-md font-semibold hover:bg-accent/90 transition-all duration-300 flex items-center gap-2 mx-auto hover:gap-3">
+            <a href="/sales-lounge" className="px-8 py-3 bg-accent text-accent-foreground rounded-md font-semibold hover:bg-accent/90 transition-all duration-300 flex items-center gap-2 mx-auto hover:gap-3 w-fit">
               VIEW ALL PROJECTS
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
+            </a>
           </div>
         </div>
       </section>

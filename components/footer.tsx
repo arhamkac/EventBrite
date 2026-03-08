@@ -24,7 +24,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative w-full bg-neutral-50 border-t border-neutral-200">
+    <footer className="relative w-full bg-neutral-100 border-t border-neutral-300">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* About Section */}
@@ -41,19 +41,19 @@ export function Footer() {
           <div className="space-y-6">
             <h4 className="text-lg font-bold text-neutral-900 uppercase tracking-wider">Contact Info</h4>
             <div className="space-y-4">
-              <a href="tel:+919833848009" className="flex items-center gap-3 text-neutral-600 hover:text-amber-600 transition-colors group">
+              <a href="tel:+919833848009" className="flex items-center gap-3 text-neutral-700 hover:text-amber-600 transition-colors group">
                 <div className="p-2 rounded-lg bg-amber-100 group-hover:bg-amber-200 transition-colors">
                   <Phone className="w-4 h-4 text-amber-600" />
                 </div>
                 <span className="text-sm font-medium">+91 9833848009</span>
               </a>
-              <a href="mailto:info@event-brite.in" className="flex items-center gap-3 text-neutral-600 hover:text-amber-600 transition-colors group">
+              <a href="mailto:info@event-brite.in" className="flex items-center gap-3 text-neutral-700 hover:text-amber-600 transition-colors group">
                 <div className="p-2 rounded-lg bg-amber-100 group-hover:bg-amber-200 transition-colors">
                   <Mail className="w-4 h-4 text-amber-600" />
                 </div>
                 <span className="text-sm font-medium">info@event-brite.in</span>
               </a>
-              <div className="flex items-start gap-3 text-neutral-600">
+              <div className="flex items-start gap-3 text-neutral-700">
                 <div className="p-2 rounded-lg bg-amber-100">
                   <MapPin className="w-4 h-4 text-amber-600" />
                 </div>
@@ -75,12 +75,12 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-neutral-200">
+        <div className="pt-8 border-t border-neutral-300">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-neutral-600">
+            <p className="text-sm text-neutral-700">
               Copyright © {new Date().getFullYear()} EventBrite | All rights reserved
             </p>
-            <p className="text-sm text-neutral-600">
+            <p className="text-sm text-neutral-700">
               Designed by <span className="font-semibold text-neutral-900">EventBrite</span>
             </p>
           </div>
