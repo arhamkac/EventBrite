@@ -26,10 +26,10 @@ export function VideoControls({ progress, visible, onSkip }: VideoControlsProps)
       {/* Subtle dark vignette so the skip button is always legible */}
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background/50 to-transparent" />
 
-      {/* Skip button */}
+      {/* Skip button - moved to bottom right */}
       <button
         onClick={onSkip}
-        className="absolute right-6 top-6 z-10 flex items-center gap-2 rounded-full border border-foreground/30 px-5 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground backdrop-blur-sm transition-all duration-300 hover:border-foreground/60 hover:bg-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:right-10 md:top-8"
+        className="absolute right-6 bottom-20 z-10 flex items-center gap-2 rounded-full border border-foreground/30 px-5 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground backdrop-blur-sm transition-all duration-300 hover:border-foreground/60 hover:bg-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:right-10 md:bottom-24"
         aria-label="Skip intro video"
         tabIndex={visible ? 0 : -1}
       >

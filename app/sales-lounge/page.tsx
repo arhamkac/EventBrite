@@ -3,7 +3,6 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ArrowRight } from "lucide-react"
-import { useState } from "react"
 
 const PROJECTS = [
   { id: 1, name: "Rustomjee", location: "Dombivli", image: "/images/rustomjee-1.webp" },
@@ -33,12 +32,12 @@ const PROJECTS = [
 ]
 
 export default function SalesLoungePage() {
-  const [videoLoaded, setVideoLoaded] = useState(false)
-
   return (
     <div className="relative min-h-screen">
-      {/* Fixed Background Video */}
-      <div className="fixed inset-0 w-full h-full z-0">
+      <Navbar />
+      
+      {/* Video Section - Full Screen */}
+      <section className="relative h-screen w-full">
         <video
           autoPlay
           loop
@@ -48,58 +47,53 @@ export default function SalesLoungePage() {
         >
           <source src="/videos/projects-bg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+        <div className="absolute inset-0 bg-black/30" />
+      </section>
 
-      {/* Scrollable Content */}
-      <div className="relative z-10">
-        <Navbar />
-        
-        {/* Gallery Grid */}
-        <section className="min-h-screen px-6 md:px-12 lg:px-20 py-32">
-          <div className="max-w-7xl mx-auto backdrop-blur-md bg-white/10 rounded-3xl p-8 md:p-12 border border-white/20">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {PROJECTS.map((project) => (
-                <div
-                  key={project.id}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-900 cursor-pointer"
-                >
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-lg font-bold mb-1 uppercase tracking-wide">{project.name}</h3>
-                    <p className="text-sm text-neutral-300 flex items-center gap-2">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                      </svg>
-                      {project.location}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            {/* See More Button */}
-            <div className="text-center mt-12">
-              <a 
-                href="https://drive.google.com/drive/folders/1lX81Vzuk-VKDSTBaGabCgLsnsLJXRmGq" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-neutral-900 rounded-full font-semibold hover:bg-neutral-100 transition-all duration-300 shadow-xl"
+      {/* Gallery Section - Scrollable */}
+      <section className="relative min-h-screen px-6 md:px-12 lg:px-20 py-20 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {PROJECTS.map((project) => (
+              <div
+                key={project.id}
+                className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-900 cursor-pointer"
               >
-                SEE ALL PROJECTS
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </a>
-            </div>
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="text-lg font-bold mb-1 uppercase tracking-wide">{project.name}</h3>
+                  <p className="text-sm text-neutral-300 flex items-center gap-2">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                    {project.location}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
+          
+          {/* See More Button */}
+          <div className="text-center mt-12">
+            <a 
+              href="https://drive.google.com/drive/folders/1lX81Vzuk-VKDSTBaGabCgLsnsLJXRmGq" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-neutral-900 text-white rounded-full font-semibold hover:bg-neutral-800 transition-all duration-300 shadow-xl"
+            >
+              SEE ALL PROJECTS
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        </div>
+      </section>
 
-        <Footer />
-      </div>
+      <Footer />
     </div>
   )
 }

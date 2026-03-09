@@ -1,5 +1,4 @@
 import { AppShell } from "@/components/app-shell"
-import { UnifiedParallaxSection } from "@/components/unified-parallax-section"
 import { ScrollHeader } from "@/components/scroll-header"
 import { SalesLoungeGallery } from "@/components/sales-lounge-gallery"
 import { AboutSection } from "@/components/about-section"
@@ -11,14 +10,15 @@ import { ClientsSection } from "@/components/clients-section"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { PageTransition } from "@/components/page-transition"
+import { AssetPreloader } from "@/components/asset-preloader"
 
 export default function Page() {
   return (
     <SmoothScroll>
+      <AssetPreloader />
       <PageTransition />
       <ScrollHeader />
       <AppShell />
-      <UnifiedParallaxSection />
       <AboutSection />
       <SalesLoungeGallery />
       <ServicesSection />

@@ -65,7 +65,7 @@ export function Navbar() {
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           aria-label="EventBrite - Home"
         >
-          <img src="/images/logo.webp" alt="EventBrite" className="h-8 md:h-10" />
+          <img src="/images/logo.webp" alt="EventBrite" className="h-10 md:h-14" />
         </a>
 
         {/* Right nav links - hidden on mobile */}
@@ -84,7 +84,7 @@ export function Navbar() {
           </ul>
 
           <a
-            href="#contact"
+            href="/contact"
             className="flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-xs font-medium uppercase tracking-widest text-primary-foreground transition-opacity duration-300 hover:opacity-90"
           >
             <span>{"LET'S TALK"}</span>
@@ -94,7 +94,7 @@ export function Navbar() {
 
         {/* Mobile CTA: use an icon only to save horizontal space */}
         <a
-          href="#contact"
+          href="/contact"
           className="flex items-center justify-center rounded-full bg-foreground p-2 text-primary-foreground lg:hidden"
           aria-label="Contact"
         >

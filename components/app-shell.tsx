@@ -24,8 +24,7 @@ import { VideoControls } from "@/components/video-controls"
  */
 type AppPhase = "playing" | "landed"
 
-const VIDEO_SRC =
-  "https://videos.pexels.com/video-files/1409899/1409899-uhd_2560_1440_25fps.mp4"
+const VIDEO_SRC = "/videos/home-bg.mp4"
 
 export function AppShell() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -84,6 +83,11 @@ export function AppShell() {
 
   // --- Video ended naturally ---
   const handleVideoEnded = useCallback(() => {
+    const video = videoRef.current
+    if (video) {
+      // Seek to the beginning so the frozen background shows the start
+      video.currentTime = 0
+    }
     transitionToLanded()
   }, [transitionToLanded])
 
@@ -91,8 +95,8 @@ export function AppShell() {
   const handleSkip = useCallback(() => {
     const video = videoRef.current
     if (video) {
-      // Seek to the last frame so the frozen background looks right
-      video.currentTime = video.duration
+      // Seek to the beginning so the frozen background shows the start
+      video.currentTime = 0
     }
     transitionToLanded()
   }, [transitionToLanded])
