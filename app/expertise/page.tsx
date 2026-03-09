@@ -2,6 +2,7 @@
 
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { useEffect, useRef, useState } from "react"
 
 const EXPERTISE_ITEMS = [
   { 
@@ -108,60 +109,105 @@ const EXPERTISE_ITEMS = [
 ]
 
 export default function ExpertisePage() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const scrollSectionRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollSectionRef.current) {
+        const rect = scrollSectionRef.current.getBoundingClientRect()
+        const scrolled = -rect.top
+        const sectionHeight = rect.height
+        const progress = Math.max(0, Math.min(1, scrolled / (sectionHeight - window.innerHeight)))
+        
+        // Smoother image transition calculation
+        const exactIndex = progress * (EXPERTISE_ITEMS.length - 1)
+        const imageIndex = Math.round(exactIndex)
+        setCurrentImageIndex(Math.min(imageIndex, EXPERTISE_ITEMS.length - 1))
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <div className="relative min-h-screen bg-neutral-50">
+    <div className="relative min-h-screen">
       <Navbar />
       
-      {/* Hero Section with Video */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
+      {/* Video Section - Full Screen */}
+      <section className="relative h-screen w-full">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
           <source src="/videos/services-bg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 text-center px-6">
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
-            Our Expertise
-          </h1>
-          <p className="max-w-3xl text-xl text-white/90">
-            Comprehensive design, build, and exhibit solutions that transform ideas into impactful real estate experiences.
-          </p>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center px-6">
+            <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
+              Our Expertise
+            </h1>
+            <p className="max-w-3xl text-xl text-white/90">
+              Comprehensive design, build, and exhibit solutions that transform ideas into impactful real estate experiences.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Expertise Cards */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-white">
-        <div className="max-w-7xl mx-auto space-y-12">
+      {/* Scrolling Background Images Section */}
+      <section ref={scrollSectionRef} className="relative min-h-[600vh]">
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          {/* Background Images */}
           {EXPERTISE_ITEMS.map((item, index) => (
-            <div 
+            <div
               key={item.id}
-              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300`}
+              className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+              style={{ opacity: currentImageIndex === index ? 1 : 0 }}
             >
-              <div className="lg:w-1/2 relative aspect-[16/10] overflow-hidden">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="lg:w-1/2 p-8 md:p-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">{item.title}</h2>
-                <p className="text-neutral-600 leading-relaxed text-lg mb-4">{item.description}</p>
-                {item.features.length > 0 && (
-                  <div className="mt-6">
-                    <h3 className="text-xl font-semibold text-neutral-900 mb-3">Key Features:</h3>
-                    <ul className="space-y-2">
-                      {item.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-neutral-600">
-                          <span className="text-amber-500 mt-1">•</span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
             </div>
           ))}
+
+          {/* Text Overlay - Left Aligned */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20">
+              <div className="max-w-3xl space-y-4 sm:space-y-6">
+                <div className="overflow-hidden">
+                  <h2 
+                    key={`title-${currentImageIndex}`}
+                    className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight animate-fade-in"
+                  >
+                    {EXPERTISE_ITEMS[currentImageIndex].title}
+                  </h2>
+                </div>
+                <div className="overflow-hidden">
+                  <p 
+                    key={`desc-${currentImageIndex}`}
+                    className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/95 leading-relaxed font-light animate-fade-in-delay"
+                  >
+                    {EXPERTISE_ITEMS[currentImageIndex].description}
+                  </p>
+                </div>
+                <div className="pt-2 sm:pt-4">
+                  <div className="inline-block px-4 sm:px-6 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                    <span className="text-white/80 text-xs sm:text-sm font-medium">
+                      {currentImageIndex + 1} / {EXPERTISE_ITEMS.length}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

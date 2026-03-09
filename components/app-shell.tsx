@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { VideoLayer } from "@/components/video-layer"
 import { LandingOverlay } from "@/components/landing-overlay"
 import { VideoControls } from "@/components/video-controls"
+import { HeroInfo } from "@/components/hero-info"
 
 /**
  * AppShell orchestrates two visual layers:
@@ -119,6 +120,13 @@ export function AppShell() {
         visible={phase === "playing"}
         onSkip={handleSkip}
       />
+
+      {/* Layer 2.5: Hero Info - Always visible */}
+      <div className="absolute inset-0 z-25 pointer-events-none">
+        <div className="pointer-events-auto">
+          <HeroInfo />
+        </div>
+      </div>
 
       {/* Layer 3: Landing overlay fades in once video completes */}
       <LandingOverlay visible={phase === "landed"} />

@@ -43,12 +43,12 @@ export default function ClientsPage() {
         <Navbar />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6">
+      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6">
         <div className="text-center">
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-white mb-4 sm:mb-6">
             Our Esteemed Clients
           </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto px-4">
             Celebrating collaborations with industry leaders who trust us
           </p>
         </div>

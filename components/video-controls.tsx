@@ -29,7 +29,7 @@ export function VideoControls({ progress, visible, onSkip }: VideoControlsProps)
       {/* Skip button - moved to bottom right */}
       <button
         onClick={onSkip}
-        className="absolute right-6 bottom-20 z-10 flex items-center gap-2 rounded-full border border-foreground/30 px-5 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground backdrop-blur-sm transition-all duration-300 hover:border-foreground/60 hover:bg-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:right-10 md:bottom-24"
+        className="absolute right-6 bottom-32 z-10 flex items-center gap-2 rounded-full border border-foreground/30 px-5 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground backdrop-blur-sm transition-all duration-300 hover:border-foreground/60 hover:bg-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:right-10 md:bottom-24"
         aria-label="Skip intro video"
         tabIndex={visible ? 0 : -1}
       >

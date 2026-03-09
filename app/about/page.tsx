@@ -78,17 +78,17 @@ export default function AboutPage() {
         </video>
         <div className="absolute inset-0 bg-black/40" />
         
-        <div className="relative h-full flex items-center justify-center px-6">
-          <div className="text-center space-y-6 max-w-4xl">
-            <h1 className="text-6xl md:text-8xl font-bold text-white leading-tight">
+        <div className="relative h-full flex items-center justify-center px-4 sm:px-6">
+          <div className="text-center space-y-4 sm:space-y-6 max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-white leading-tight">
               Who <span className="text-amber-500">We Are</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-2xl mx-auto px-4">
               Driven by passion, defined by purpose — building trust and delivering excellence every step of the way.
             </p>
-            <a href="/contact" className="group inline-flex items-center gap-3 px-8 py-4 bg-amber-600 text-white rounded-xl font-semibold hover:bg-amber-500 transition-all duration-300">
+            <a href="/contact" className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-amber-600 text-white rounded-xl font-semibold hover:bg-amber-500 transition-all duration-300 text-sm sm:text-base">
               WORK WITH US
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
         </div>
@@ -221,7 +221,7 @@ export default function AboutPage() {
                     }`}
                   >
                     <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/20 to-amber-600/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="relative h-[600px] rounded-3xl overflow-hidden">
+                    <div className="relative h-[400px] sm:h-[500px] md:h-[600px] rounded-3xl overflow-hidden">
                       <div 
                         className="absolute inset-0 bg-cover bg-center transition-transform duration-300"
                         style={{
@@ -230,19 +230,19 @@ export default function AboutPage() {
                         }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                      <div className="absolute inset-0 flex flex-col justify-end p-12">
-                        <h3 className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 mb-4">{spec.title}</h3>
+                      <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 md:p-12">
+                        <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 mb-4">{spec.title}</h3>
                       </div>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className={`space-y-8 ${
+                  <div className={`space-y-6 sm:space-y-8 ${
                     index % 2 === 1 ? 'lg:order-1' : ''
                   }`}>
-                    <div className="space-y-6">
-                      <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-amber-600"></div>
-                      <p className="text-neutral-300 text-xl leading-relaxed">
+                    <div className="space-y-4 sm:space-y-6">
+                      <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-amber-500 to-amber-600"></div>
+                      <p className="text-neutral-300 text-base sm:text-lg md:text-xl leading-relaxed">
                         {spec.description}
                       </p>
                     </div>
