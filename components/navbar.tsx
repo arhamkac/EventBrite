@@ -6,12 +6,13 @@ import { Plus, Send } from "lucide-react"
 const NAV_LINKS_LEFT = [
   { label: "PROJECTS", href: "/sales-lounge" },
   { label: "SERVICES", href: "/expertise" },
-  { label: "CONTACT", href: "/contact" },
+  { label: "EVENTS", href: "/events" },
 ] as const
 
 const NAV_LINKS_RIGHT = [
   { label: "ABOUT", href: "/about" },
   { label: "CLIENTS", href: "/clients" },
+  { label: "CONTACT", href: "/contact" },
 ] as const
 
 export function Navbar() {
@@ -65,7 +66,7 @@ export function Navbar() {
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           aria-label="EventBrite - Home"
         >
-          <img src="/images/logo.webp" alt="EventBrite" className="h-10 md:h-14" />
+          <img src="/images/logo.webp" alt="EventBrite" className="h-12 md:h-14" />
         </a>
 
         {/* Right nav links - hidden on mobile */}

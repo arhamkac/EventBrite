@@ -32,22 +32,6 @@ export function AboutSection() {
       
       <div className="max-w-7xl mx-auto relative">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
-          {/* Image */}
-          <div 
-            className="relative order-2 lg:order-1"
-            style={{ transform: `translateY(${scrollY * 0.05}px)` }}
-          >
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-blue-500/10">
-              <img
-                src="/images/eb-1.webp"
-                alt="Eventbrite office interior"
-                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/20 to-transparent" />
-            </div>
-          </div>
-
           {/* Content */}
           <div 
             className="space-y-8 order-1 lg:order-2"
@@ -73,6 +57,19 @@ export function AboutSection() {
               </p>
             </div>
 
+            {/* Image - Mobile Only */}
+            <div className="lg:hidden relative">
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-blue-500/10">
+                <img
+                  src="/images/eb-1.webp"
+                  alt="Eventbrite office interior"
+                  className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/20 to-transparent" />
+              </div>
+            </div>
+
             <div className="grid grid-cols-2 gap-4 pt-4">
               {STATS.map((stat, i) => (
                 <div 
@@ -92,6 +89,22 @@ export function AboutSection() {
               LEARN MORE
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
+          </div>
+
+          {/* Image - Desktop Only */}
+          <div 
+            className="hidden lg:block relative order-2 lg:order-1"
+            style={{ transform: `translateY(${scrollY * 0.05}px)` }}
+          >
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-blue-500/10">
+              <img
+                src="/images/eb-1.webp"
+                alt="Eventbrite office interior"
+                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/20 to-transparent" />
+            </div>
           </div>
         </div>
       </div>
