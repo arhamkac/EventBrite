@@ -53,7 +53,7 @@ export function ClientsSection() {
             {[...CLIENTS, ...CLIENTS, ...CLIENTS].map((client, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-40 h-32 flex items-center justify-center bg-white rounded-xl p-6 border border-neutral-200 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300"
+                className="flex-shrink-0 w-56 h-40 flex items-center justify-center bg-white rounded-xl p-4 border border-neutral-200 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300"
                 style={{
                   opacity: Math.min(scrollProgress * 2, 1)
                 }}
@@ -61,22 +61,16 @@ export function ClientsSection() {
                 <img
                   src={client.logo}
                   alt={`Client ${client.id}`}
-                  className="max-w-full max-h-full object-contain transition-all duration-300"
+                  className={`object-contain transition-all duration-300 ${client.id === 11 ? "w-full h-full scale-150" : "max-w-full max-h-full"}`}
                 />
               </div>
             ))}
           </div>
         </div>
 
-        <div 
-          className="text-center mt-16"
-          style={{
-            opacity: Math.min((scrollProgress - 0.3) * 2, 1),
-            transform: `translateY(${Math.max(0, 20 - (scrollProgress - 0.3) * 40)}px)`
-          }}
-        >
+        <div className="text-center mt-16">
           <a href="/clients" className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-neutral-900 to-neutral-800 text-white rounded-full font-semibold hover:shadow-xl hover:shadow-neutral-900/30 transition-all duration-300">
-            VIEW ALL CLIENTS
+            SEE ALL CLIENTS
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </a>
         </div>
@@ -96,6 +90,11 @@ export function ClientsSection() {
         }
         .animate-scroll:hover {
           animation-play-state: paused;
+        }
+        @media (max-width: 768px) {
+          .animate-scroll {
+            animation-duration: 15s;
+          }
         }
       `}</style>
     </section>

@@ -71,11 +71,11 @@ export default function ClientsPage() {
                   key={client.id}
                   className="relative aspect-square bg-white rounded-xl shadow-md hover:shadow-2xl transition-shadow duration-300 border border-neutral-200"
                 >
-                  <div className="absolute inset-0 p-6 flex items-center justify-center">
+                  <div className="absolute inset-0 p-4 flex items-center justify-center">
                     <img
                       src={client.image}
                       alt={`Client ${client.id}`}
-                      className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-110"
+                      className={`object-contain transition-transform duration-300 hover:scale-110 ${client.id === 11 ? "w-full h-full scale-150" : "max-w-full max-h-full"}`}
                     />
                   </div>
                 </div>
